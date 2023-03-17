@@ -158,10 +158,10 @@ func (c *IndexSchema) Add() {
 		// Create the constraint using the index we just created
 		if c.get("pk") == "true" {
 			// Add primary key using the index
-			fmt.Printf("ALTER TABLE %s.%s ADD CONSTRAINT %s PRIMARY KEY USING INDEX %s; -- (1)\n", schema, c.get("table_name"), c.get("index_name"), c.get("index_name"))
+			fmt.Printf("ALTER TABLE %s.%s ADD CONSTRAINT \"%s\" PRIMARY KEY USING INDEX %s; -- (1)\n", schema, c.get("table_name"), c.get("index_name"), c.get("index_name"))
 		} else if c.get("uq") == "true" {
 			// Add unique constraint using the index
-			fmt.Printf("ALTER TABLE %s.%s ADD CONSTRAINT %s UNIQUE USING INDEX %s; -- (2)\n", schema, c.get("table_name"), c.get("index_name"), c.get("index_name"))
+			fmt.Printf("ALTER TABLE %s.%s ADD CONSTRAINT \"%s\" UNIQUE USING INDEX %s; -- (2)\n", schema, c.get("table_name"), c.get("index_name"), c.get("index_name"))
 		}
 	}
 }
@@ -209,10 +209,10 @@ func (c *IndexSchema) Change(obj interface{}) {
 				// Add constraint using the index
 				if c.get("pk") == "true" {
 					// Add primary key using the index
-					fmt.Printf("ALTER TABLE %s ADD CONSTRAINT %s PRIMARY KEY USING INDEX %s; -- (3)\n", c.get("table_name"), c.get("index_name"), c.get("index_name"))
+					fmt.Printf("ALTER TABLE %s ADD CONSTRAINT \"%s\" PRIMARY KEY USING INDEX %s; -- (3)\n", c.get("table_name"), c.get("index_name"), c.get("index_name"))
 				} else if c.get("uq") == "true" {
 					// Add unique constraint using the index
-					fmt.Printf("ALTER TABLE %s ADD CONSTRAINT %s UNIQUE USING INDEX %s; -- (4)\n", c.get("table_name"), c.get("index_name"), c.get("index_name"))
+					fmt.Printf("ALTER TABLE %s ADD CONSTRAINT \"%s\" UNIQUE USING INDEX %s; -- (4)\n", c.get("table_name"), c.get("index_name"), c.get("index_name"))
 				} else {
 
 				}
